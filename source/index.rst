@@ -11,10 +11,12 @@ Welcome to Python for LinkIoT's documentation!
    :caption: API and Usage
 
 .. toctree::
-    :caption: hellowork
+    :caption: LinkIoT
     :numbered:
 
-    hello/helloworld
+    intro/intro_linkiot
+    intro/install_python
+    intro/install_mueditor
 
 
 
