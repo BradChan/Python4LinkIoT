@@ -18,5 +18,14 @@ Welcome to Python for LinkIoT's documentation!
     intro/install_python
     intro/install_mueditor
 
+.. toctree::
+    :caption: LinkIoT Core
+    :numbered:
+
+    linkiot_api/linkiot_api_intro
+    linkiot_api/linkiot_api_led
+    linkiot_api/linkiot_api_button
+    linkiot_api/linkiot_api_acc
+    linkiot_api/linkiot_api_lcd
 
 
