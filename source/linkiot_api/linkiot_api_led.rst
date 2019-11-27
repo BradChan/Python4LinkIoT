@@ -1,5 +1,5 @@
 =========================
-LinkIoT Led模块
+可编程Led模块
 =========================
 
 LinkIoT具有一颗可编程控制Led灯，引用LinkIoT模块即可直接控制使用。
@@ -29,6 +29,25 @@ linkiot.setLed(value)
 ==========================
 linkiot.setLedBrightness(value)
  参数value是数字类型，可设置0~100。
+
+示例2：
+
+.. code-block:: python
+    :linenos:
+
+    import time
+    from linkiot import *
+
+    ledBrightness = 0
+
+    while True:
+        if ledBrightness > 100:
+            ledBrightness = 0
+        
+        linkiot.setLedBrightness(ledBrightness)
+        ledBrightness += 10
+        utime.sleep_ms(100)
+
 
 
 
