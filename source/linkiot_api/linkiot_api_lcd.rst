@@ -121,3 +121,47 @@ Lcd Methods
 
 
 
+示例1：
+
+.. code-block:: python
+    :linenos:
+
+    import machine, utime
+    from linkiot import *
+
+
+
+    def rotateScreen():
+        if linkiot.accX > 9.0:
+            linkiot.Lcd.setRotation(TFT_LANDSCAPE)
+        elif linkiot.accX < -9.0:
+            linkiot.Lcd.setRotation(TFT_LANDSCAPE_FLIP)
+        elif linkiot.accY > 9.0:
+            linkiot.Lcd.setRotation(TFT_PORTRAIT_FLIP)
+        elif linkiot.accY < -9.0:
+            linkiot.Lcd.setRotation(TFT_PORTRAIT)
+
+    ledStatus = False
+
+    def on_wasPressed():
+        print("button pressed")
+
+    linkiot.button.wasPressed(on_wasPressed)
+
+    while True:
+        linkiot.updateAttitude()
+        rotateScreen()
+        
+        if linkiot.wasShaked:
+            print("shaked")
+    
+        linkiot.Lcd.clear()
+        linkiot.Lcd.text(0,0,str(linkiot.accX), TFT_GREEN)
+        linkiot.Lcd.text(0,25,str(linkiot.accY), TFT_BLUE)
+        linkiot.Lcd.text(0,50,str(linkiot.accZ), TFT_PURPLE)
+        linkiot.Lcd.text(0,75,str(linkiot.anglePitch), TFT_RED)
+        linkiot.Lcd.text(0,100,str(linkiot.angleRoll), TFT_YELLOW)
+
+        linkiot.setLed(ledStatus)
+        ledStatus = not ledStatus
+        utime.sleep_ms(200)
